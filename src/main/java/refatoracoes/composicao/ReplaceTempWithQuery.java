@@ -1,13 +1,13 @@
 package refatoracoes.composicao;
 
 public class ReplaceTempWithQuery {
-	double calculateTotal(int quantity, double itemPrice) {
-		  double basePrice = quantity * itemPrice;
-		  if (basePrice > 1000) {
-		    return basePrice * 0.95;
-		  }
-		  else {
-		    return basePrice * 0.98;
-		  }
-		}
+
+    double calculateTotal(int quantity, double itemPrice) {
+        double discountRate = getBasePrice(quantity, itemPrice) > 1000 ? 0.95 : 0.98;
+        return getBasePrice(quantity, itemPrice) * discountRate;
+    }
+
+    private double getBasePrice(int quantity, double itemPrice) {
+        return quantity * itemPrice;
+    }
 }
